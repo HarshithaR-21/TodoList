@@ -49,7 +49,7 @@ function SignUP() {
             .then(result => {
                 if (result.data.status === 'Success') {
                     console.log(result);
-                    toast.success(result.data.message)
+                    toast.success("Successfully registered!")
                     setName('')
                     setEmail('')
                     setphone('')
@@ -57,7 +57,7 @@ function SignUP() {
                     setTimeout(() => navigate('/login'), 2000)
                 }
                 else {
-                    toast.error(result.data.message);
+                    toast.error("User already exists");
                 }
 
             }).catch(err => {

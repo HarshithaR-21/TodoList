@@ -47,6 +47,7 @@ function SignUP() {
         validate();
         axios.post('https://task-stack.onrender.com/signUp', { name, email, phone, password })
             .then(result => {
+                
                 console.log(result);
                 toast.success("Successfully registered!")
                 setName('')
@@ -55,7 +56,13 @@ function SignUP() {
                 setPass('')
                 setTimeout(() => navigate('/login'), 2000)
 
-            }).catch(err => console.log(err))
+            }).catch(err => {
+                if (err.response && err.response.status === 400) {
+                    toast.error("User already exists!"); // Show error toast
+                } else {
+                    toast.error("Something went wrong. Please try again.");
+                }})
+            
     }
 
     return (

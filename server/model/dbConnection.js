@@ -1,6 +1,6 @@
 const {MongoClient} = require('mongodb');
-const url = 'mongodb://127.0.0.1:27017'
-const client = new MongoClient(url);
+require('dotenv').config();
+const client = new MongoClient(process.env.MONGO_URL);
 
 const dbConnection = async () => {
     await client.connect()

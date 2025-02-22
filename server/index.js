@@ -20,12 +20,12 @@ app.post('/signUp', async (req, res) => {
         const existingUser = await users.findOne({ email: req.body.email });
 
         if (existingUser) {
-            res.json({status: 'Error', message : 'Password is incorrect'});
+            res.json({status: 'Error', message : 'User already exits'});
         }
         else{
             let insertRes = await users.insertOne(req.body)
             console.log(insertRes);
-            res.json({status: 'success', message: 'Signed up successfully'})
+            res.json({status: 'Success', message: 'Signed up successfully'})
         }
         
     }

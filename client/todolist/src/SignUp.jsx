@@ -47,7 +47,7 @@ function SignUP() {
         validate();
         axios.post('https://task-stack.onrender.com/signUp', { name, email, phone, password })
             .then(result => {
-                if (result.data.status == 'success') {
+                if (result.data.status === 'Success') {
                     console.log(result);
                     toast.success(result.data.message)
                     setName('')

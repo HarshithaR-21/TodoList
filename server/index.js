@@ -20,11 +20,14 @@ app.post('/signUp', async (req, res) => {
         const existingUser = await users.findOne({ email: req.body.email });
 
         if (existingUser) {
-            return res.status(400).json({ success: false, message: "User already exists!" });
+            res.status(400).json({ success: false, message: "User already exists!" });
         }
-        let insertRes = await users.insertOne(req.body)
-        console.log(insertRes);
-        res.json({success: true, message: 'Signed up successfully'})
+        else{
+            let insertRes = await users.insertOne(req.body)
+            console.log(insertRes);
+            res.json({success: true, message: 'Signed up successfully'})
+        }
+        
     }
     catch(error){
         console.log(error);

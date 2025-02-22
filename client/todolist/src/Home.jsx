@@ -3,7 +3,7 @@ import { FaLightbulb, FaListCheck, FaTrophy } from "react-icons/fa6";
 
 import Sidebar from "./components/Sidebar";
 import Navbar from "./components/Navbar";
-import About from "./components/About";
+
 
 function Home() {
 

@@ -45,7 +45,7 @@ function SignUP() {
     const handleSubmit = (e) => {
         e.preventDefault();
         validate();
-        axios.post('http://localhost:8000/signUp', { name, email, phone, password })
+        axios.post('https://task-stack.onrender.com/signUp', { name, email, phone, password })
             .then(result => {
                 console.log(result);
                 toast.success("Successfully registered!")

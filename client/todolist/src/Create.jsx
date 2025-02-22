@@ -14,7 +14,7 @@ function Create() {
     useEffect(() => {
         const userEmail = localStorage.getItem('userEmail');
         if (userEmail) {
-            axios.get(`http://localhost:8000/todos/${userEmail}`)
+            axios.get(`https://task-stack.onrender.com/todos/${userEmail}`)
                 .then(result => setTodos(result.data))
                 .catch(err => console.log(err))
         }
@@ -32,7 +32,7 @@ function Create() {
             toast.error('Please enter the task!');
             return;
         }
-        axios.post('http://localhost:8000/add', { email: userEmail, task: task }).then(result => {
+        axios.post('https://task-stack.onrender.com/add', { email: userEmail, task: task }).then(result => {
             console.log(result);
             toast.success('Task added successfully!')
             setTodos([...todos, { email: userEmail, task }])
@@ -45,7 +45,7 @@ function Create() {
 
     const handleDone = (taskDone, index) => {
         const userEmail = localStorage.getItem('userEmail');
-        axios.post('http://localhost:8000/delete', { email: userEmail, taskDone }).then(result => {
+        axios.post('https://task-stack.onrender.com/delete', { email: userEmail, taskDone }).then(result => {
             console.log(result);
             toast.success('Task Done successfully!');
             setTodos(todos.filter((_, ind) => ind != index));

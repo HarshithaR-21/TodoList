@@ -9,11 +9,11 @@ app.use(express.json());
 app.use(cors());
 require('dotenv').config();
 
-app.get('https://task-stack.onrender.com', (req, res) => {
+app.get('/', (req, res) => {
     res.send('Home page api');
 })
 
-app.post('https://task-stack.onrender.com/signUp', async (req, res) => {
+app.post('/signUp', async (req, res) => {
     try{
         let myDb = await dbConnection();
         let users = myDb.collection('users');
@@ -27,7 +27,7 @@ app.post('https://task-stack.onrender.com/signUp', async (req, res) => {
     }
 })
 
-app.post('https://task-stack.onrender.com/login', async (req, res) => {
+app.post('/login', async (req, res) => {
     let myDb = await dbConnection();
     let users = myDb.collection('users');
     const {email, password} = req.body;
@@ -46,7 +46,7 @@ app.post('https://task-stack.onrender.com/login', async (req, res) => {
     })
 })
 
-app.post('https://task-stack.onrender.com/add', async (req, res) => {
+app.post('/add', async (req, res) => {
     try {
         let {email, task} = req.body;
         if(!email || !task){
@@ -65,7 +65,7 @@ app.post('https://task-stack.onrender.com/add', async (req, res) => {
 
 });
 
-app.get('https://task-stack.onrender.com/todos/:email', async (req, res) => {
+app.get('/todos/:email', async (req, res) => {
     try{
         let userEmail = req.params.email;
         console.log(userEmail)
@@ -82,7 +82,7 @@ app.get('https://task-stack.onrender.com/todos/:email', async (req, res) => {
     }
 })
 
-app.post('https://task-stack.onrender.com/delete', async (req, res) => {
+app.post('/delete', async (req, res) => {
     try{
         let {email, taskDone} = req.body;
         let myDb = await dbConnection();

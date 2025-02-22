@@ -47,22 +47,23 @@ function SignUP() {
         validate();
         axios.post('https://task-stack.onrender.com/signUp', { name, email, phone, password })
             .then(result => {
-                
-                console.log(result);
-                toast.success("Successfully registered!")
-                setName('')
-                setEmail('')
-                setphone('')
-                setPass('')
-                setTimeout(() => navigate('/login'), 2000)
+                if (result.data.status == 'success') {
+                    console.log(result);
+                    toast.success(result.data.message)
+                    setName('')
+                    setEmail('')
+                    setphone('')
+                    setPass('')
+                    setTimeout(() => navigate('/login'), 2000)
+                }
+                else {
+                    toast.error(result.data.message);
+                }
 
             }).catch(err => {
-                if (err.response && err.response.status === 400) {
-                    toast.error("User already exists!"); // Show error toast
-                } else {
-                    toast.error("Something went wrong. Please try again.");
-                }})
-            
+                console.log(err);
+            })
+
     }
 
     return (

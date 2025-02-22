@@ -18,6 +18,7 @@ app.post('/signUp', async (req, res) => {
         let myDb = await dbConnection();
         let users = myDb.collection('users');
         const existingUser = await users.findOne({ email: req.body.email });
+        console.log(existingUser);
 
         if (existingUser) {
             res.json({status: 'Error'});

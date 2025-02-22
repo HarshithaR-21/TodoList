@@ -46,7 +46,10 @@ function SignUP() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        validate();
+        if (!validate()) {  // Check validation
+        toast.error("Please fix validation errors");
+        return; // Stop execution if validation fails
+    }
         axios.post('https://task-stack.onrender.com/signUp', { name, email, phone, password })
             .then(result => {
                 if (result.data.status === 'Success') {

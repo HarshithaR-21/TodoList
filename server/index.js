@@ -13,7 +13,7 @@ app.get('/', (req, res) => {
     res.send('Home page api');
 })
 
-app.post('/register', async (req, res) => {
+app.post('/signUp', async (req, res) => {
     try{
         let myDb = await dbConnection();
         let users = myDb.collection('users');

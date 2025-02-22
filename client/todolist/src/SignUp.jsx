@@ -39,6 +39,8 @@ function SignUP() {
         else if (password.length < 6) {
             validationErrors.password = 'Password must be atleast 6 characters'
         }
+        setErrors(validationErrors); 
+        return Object.keys(validationErrors).length === 0;
 
     }
 

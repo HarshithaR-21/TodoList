@@ -9,7 +9,7 @@ function Home() {
 
     return (
 
-        <div className="sm:bg-bannerImg bg-mobileImg bg-no-repeat bg-cover">
+        <div className="sm:bg-bannerImg bg-mobileImg bg-no-repeat bg-center bg-cover min-h-screen w-full">
 
             <nav className="p-6 m-0">
                 <Sidebar/>
